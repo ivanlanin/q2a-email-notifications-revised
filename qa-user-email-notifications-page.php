@@ -40,7 +40,7 @@ class qa_user_email_notifications_page
 	{
 		return array(
 			array(
-				'title' => 'User Email Notifications',
+				'title' => qa_lang('notif/menu-title'),
 				'request' => 'qa-user-email-notifications-page',
 				'nav' => 'F', // 'M'=main, 'F'=footer, 'B'=before main, 'O'=opposite main, null=none
 			),
@@ -56,7 +56,7 @@ class qa_user_email_notifications_page
 	{
 		$qa_content=qa_content_prepare();
 
-		$qa_content['title']='Email Notifications';
+		$qa_content['title']=qa_lang('notif/page-title');
 
 		$subresult = false;
 		$subresultmsg = '';
@@ -86,26 +86,26 @@ class qa_user_email_notifications_page
 
 			'ok' => (empty($captchaerrors) && $subresult) ? $subresultmsg : null,
 
-			'title' => 'To subscribe or unsubscribe to receive emails when a new question is posted, please enter your email address:',
+			'title' => qa_lang('notif/info'),
 
 			'fields' => array(
 				'suboptin' => array(
 					'label' => '',
 					'tags' => 'NAME="optin"',
 					'type' => 'select-radio',
-					'options' => array('Subscribe', 'Unsubscribe'),
-					'value' => 'Subscribe',
+					'options' => array(qa_lang('notif/subscribe'), qa_lang('notif/unsubscribe')),
+					'value' => qa_lang('notif/subscribe'),
 					'error' => '',
 				),
 				'favolnly' => array(
-					'label' => 'Receive notifications only for<br/> favorite questions and categories',
+					'label' => qa_lang('notif/favonly'),
 					'tags' => 'NAME="favonly"',
 					'type' => 'checkbox',
 					'value' => 1,
 					'error' => '',
 				),
 				'request' => array(
-					'label' => 'Email address',
+					'label' => qa_lang('notif/email'),
 					'tags' => 'NAME="email"',
 					'value' => qa_get_logged_in_email(),
 					'error' => (empty($captchaerrors) && !$subresult) ? qa_html($subresultmsg) : '',
@@ -115,7 +115,7 @@ class qa_user_email_notifications_page
 			'buttons' => array(
 				'ok' => array(
 					'tags' => 'NAME="ok"',
-					'label' => 'OK',
+					'label' => qa_lang('notif/send'),
 					'value' => '1',
 				),
 			),
